@@ -9,5 +9,5 @@ import com.example.entities.*;
 @Component
 @Repository
 public interface FlashcardSetRepository extends JpaRepository<FlashcardSet, Integer>{
-
+	FlashcardSet findByTitle(String title);
 }

@@ -9,5 +9,5 @@ import com.example.entities.*;
 @Component
 @Repository
 public interface TagRepository extends JpaRepository<Tag, Integer>{
-
+	Tag findByTitle(String title);
 }

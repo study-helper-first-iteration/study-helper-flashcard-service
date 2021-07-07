@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,10 +32,16 @@ public class FlashcardSet {
 	private long createdDate;
 	@Column(name="lastmodifieddate")
 	private long lastModifiedDate;
-	@OneToMany(mappedBy = "flashcardset", fetch = FetchType.LAZY)
+	
+	@OneToMany(mappedBy = "flashcardSet", fetch = FetchType.LAZY)
 	private Set<Flashcard> flashcard = new HashSet<Flashcard>(); 
-	@ManyToMany(mappedBy ="flashcardset")
-	private Set<Tag> tag = new HashSet<Tag>();
+	
+	
+	@ManyToMany
+	@JoinTable(name = "tag_flashcardset", // the junction table that contains the information connecting the two
+	joinColumns = { @JoinColumn (name = "flashcardset_id")},
+	inverseJoinColumns = { @JoinColumn (name = "tag_id")})	
+	private Set<Tag> tags = new HashSet<Tag>();
 	
 	public FlashcardSet(int id, String title, long createdDate, long lastModifiedDate, Set<Flashcard> flashcard,
 			Set<Tag> tag) {
@@ -43,7 +51,7 @@ public class FlashcardSet {
 		this.createdDate = createdDate;
 		this.lastModifiedDate = lastModifiedDate;
 		this.flashcard = flashcard;
-		this.tag = tag;
+		this.tags = tag;
 	}
 
 	public int getId() {
@@ -87,17 +95,17 @@ public class FlashcardSet {
 	}
 
 	public Set<Tag> getActors() {
-		return tag;
+		return tags;
 	}
 
 	public void setActors(Set<Tag> actors) {
-		this.tag = actors;
+		this.tags = actors;
 	}
 
 	@Override
 	public String toString() {
 		return "FlashcardSet [id=" + id + ", title=" + title + ", createdDate=" + createdDate + ", lastModifiedDate="
-				+ lastModifiedDate + ", flashcard=" + flashcard + ", tag=" + tag + "]";
+				+ lastModifiedDate + ", flashcard=" + flashcard + ", tag=" + tags + "]";
 	}
 	
 	

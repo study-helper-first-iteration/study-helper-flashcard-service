@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -23,7 +24,9 @@ public class Flashcard {
 	private String question;
 	@Column(name="answer")
 	private String answer; 
-	@JoinColumn(name = "flashcard_id")
+	
+	@ManyToOne
+	@JoinColumn(name = "flashcardset_id")
 	private FlashcardSet flashcardSet;
 	
 	

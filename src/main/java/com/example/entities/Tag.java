@@ -21,14 +21,15 @@ public class Tag {
 	private int id;
 	@Column(name="title")
 	private String title;
-	@ManyToMany(mappedBy ="flashcardset")
-	private Set<FlashcardSet> flashcardSet = new HashSet<FlashcardSet>();
+	
+	@ManyToMany(mappedBy ="tags")
+	private Set<FlashcardSet> fs = new HashSet<FlashcardSet>();
 	
 	public Tag(int id, String title, Set<FlashcardSet> flashcardSet) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.flashcardSet = flashcardSet;
+		this.fs = flashcardSet;
 	}
 
 	public int getId() {
@@ -48,16 +49,16 @@ public class Tag {
 	}
 
 	public Set<FlashcardSet> getFlashcardSet() {
-		return flashcardSet;
+		return fs;
 	}
 
 	public void setFlashcardSet(Set<FlashcardSet> flashcardSet) {
-		this.flashcardSet = flashcardSet;
+		this.fs = flashcardSet;
 	}
 
 	@Override
 	public String toString() {
-		return "Tag [id=" + id + ", title=" + title + ", flashcardSet=" + flashcardSet + "]";
+		return "Tag [id=" + id + ", title=" + title + ", flashcardSet=" + fs + "]";
 	}
 	
 	

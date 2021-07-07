@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.entities.*;
 
+
 @Component
 @Repository
 public interface FlashcardRepository extends JpaRepository<Flashcard,Integer> {
-
 }
