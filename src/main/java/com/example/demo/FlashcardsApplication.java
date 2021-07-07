@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.example.entities") // will allow spring to find your entities
 @ComponentScan("com.example")// please scan all packages and any class labled with component incorporate into the spring application
 @EnableJpaRepositories("com.example.repositories") //Telling Spring where to find my repositories
-@EnableEurekaClient
 public class FlashcardsApplication {
 
 	public static void main(String[] args) {

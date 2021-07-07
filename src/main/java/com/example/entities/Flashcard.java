@@ -1,5 +1,7 @@
 package com.example.entities;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,23 +21,26 @@ public class Flashcard {
 	@Column(name = "flashcard_id")
 	private int id;
 	@Column(name="createddate")
-	private long createdDate;
+	private Calendar createdDate;
 	@Column(name="question")
 	private String question;
 	@Column(name="answer")
 	private String answer; 
-	
 	@ManyToOne
 	@JoinColumn(name = "flashcardset_id")
 	private FlashcardSet flashcardSet;
 	
+	public Flashcard() {
+		super();
+	}
 	
-	public Flashcard(int id, long createdDate, String question, String answer) {
+	public Flashcard(int id, Calendar createdDate, String question, String answer, FlashcardSet flashcardSet) {
 		super();
 		this.id = id;
 		this.createdDate = createdDate;
 		this.question = question;
 		this.answer = answer;
+		this.flashcardSet = flashcardSet;
 	}
 
 
@@ -49,12 +54,12 @@ public class Flashcard {
 	}
 
 
-	public long getCreatedDate() {
+	public Calendar getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(long createdDate) {
+	public void setCreatedDate(Calendar createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -77,12 +82,23 @@ public class Flashcard {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+	
+	
+
+	public FlashcardSet getFlashcardSet() {
+		return flashcardSet;
+	}
+
+	public void setFlashcardSet(FlashcardSet flashcardSet) {
+		this.flashcardSet = flashcardSet;
+	}
 
 	@Override
 	public String toString() {
 		return "Flashcard [id=" + id + ", createdDate=" + createdDate + ", question=" + question + ", answer=" + answer
-				+ "]";
+				+ ", flashcardSet=" + flashcardSet + "]";
 	}
+
 	
 	
 	

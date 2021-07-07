@@ -1,5 +1,6 @@
 package com.example.entities;
 
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,8 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
-
-
 @Entity
 @Table(name = "flashcardset")
 public class FlashcardSet {
@@ -29,9 +28,9 @@ public class FlashcardSet {
 	@Column(name="title")
 	private String title;
 	@Column(name="createddate")
-	private long createdDate;
+	private Calendar createdDate;
 	@Column(name="lastmodifieddate")
-	private long lastModifiedDate;
+	private Calendar lastModifiedDate;
 	
 	@OneToMany(mappedBy = "flashcardSet", fetch = FetchType.LAZY)
 	private Set<Flashcard> flashcard = new HashSet<Flashcard>(); 
@@ -43,7 +42,11 @@ public class FlashcardSet {
 	inverseJoinColumns = { @JoinColumn (name = "tag_id")})	
 	private Set<Tag> tags = new HashSet<Tag>();
 	
-	public FlashcardSet(int id, String title, long createdDate, long lastModifiedDate, Set<Flashcard> flashcard,
+	public FlashcardSet() {
+		super();
+	}
+	
+	public FlashcardSet(int id, String title, Calendar createdDate, Calendar lastModifiedDate, Set<Flashcard> flashcard,
 			Set<Tag> tag) {
 		super();
 		this.id = id;
@@ -70,19 +73,19 @@ public class FlashcardSet {
 		this.title = title;
 	}
 
-	public long getCreatedDate() {
+	public Calendar getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(long createdDate) {
+	public void setCreatedDate(Calendar createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public long getLastModifiedDate() {
+	public Calendar getLastModifiedDate() {
 		return lastModifiedDate;
 	}
 
-	public void setLastModifiedDate(long lastModifiedDate) {
+	public void setLastModifiedDate(Calendar lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 

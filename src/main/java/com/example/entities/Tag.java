@@ -25,6 +25,10 @@ public class Tag {
 	@ManyToMany(mappedBy ="tags")
 	private Set<FlashcardSet> fs = new HashSet<FlashcardSet>();
 	
+	public Tag() {
+		super();
+	}
+	
 	public Tag(int id, String title, Set<FlashcardSet> flashcardSet) {
 		super();
 		this.id = id;
