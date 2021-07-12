@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,8 +31,10 @@ public class Flashcard {
 	private String question;
 	@Column(name="answer")
 	private String answer; 
+	
 	@ManyToOne
 	@JoinColumn(name = "flashcardset_id")
+	@JsonIgnoreProperties({"flashcard"})
 	private FlashcardSet flashcardSet;
 	
 	public Flashcard() {

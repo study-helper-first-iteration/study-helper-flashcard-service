@@ -17,6 +17,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Lazy;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -36,13 +39,17 @@ public class FlashcardSet {
 	@Column(name="lastmodifieddate")
 	private Timestamp lastModifiedDate;
 	
+	@Lazy
 	@OneToMany(mappedBy = "flashcardSet", fetch = FetchType.LAZY)
 	private Set<Flashcard> flashcard = new HashSet<Flashcard>(); 
 	
-	@ManyToMany
+	@Lazy
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "tag_flashcardset", // the junction table that contains the information connecting the two
 	joinColumns = { @JoinColumn (name = "flashcardset_id")},
-	inverseJoinColumns = { @JoinColumn (name = "tag_id")})	
+	inverseJoinColumns = { @JoinColumn (name = "tag_id")})
+	@JsonIgnoreProperties({"fs"})
+	@JsonIgnore
 	private Set<Tag> tags = new HashSet<Tag>();
 	
 	public FlashcardSet() {

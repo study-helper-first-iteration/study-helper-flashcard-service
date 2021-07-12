@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Lazy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -26,7 +28,9 @@ public class Tag {
 	@Column(name="title")
 	private String title;
 	
+	@Lazy
 	@ManyToMany(mappedBy ="tags", fetch=FetchType.LAZY)
+	@JsonIgnoreProperties({"tags"})
 	private Set<FlashcardSet> fs = new HashSet<FlashcardSet>();
 	
 	public Tag() {
