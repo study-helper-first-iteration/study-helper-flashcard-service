@@ -1,5 +1,6 @@
 package com.example.entities;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +17,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "flashcardset")
@@ -28,13 +32,12 @@ public class FlashcardSet {
 	@Column(name="title")
 	private String title;
 	@Column(name="createddate")
-	private Calendar createdDate;
+	private Timestamp createdDate;
 	@Column(name="lastmodifieddate")
-	private Calendar lastModifiedDate;
+	private Timestamp lastModifiedDate;
 	
 	@OneToMany(mappedBy = "flashcardSet", fetch = FetchType.LAZY)
 	private Set<Flashcard> flashcard = new HashSet<Flashcard>(); 
-	
 	
 	@ManyToMany
 	@JoinTable(name = "tag_flashcardset", // the junction table that contains the information connecting the two
@@ -46,7 +49,7 @@ public class FlashcardSet {
 		super();
 	}
 	
-	public FlashcardSet(int id, String title, Calendar createdDate, Calendar lastModifiedDate, Set<Flashcard> flashcard,
+	public FlashcardSet(int id, String title, Timestamp createdDate, Timestamp lastModifiedDate, Set<Flashcard> flashcard,
 			Set<Tag> tag) {
 		super();
 		this.id = id;
@@ -73,43 +76,44 @@ public class FlashcardSet {
 		this.title = title;
 	}
 
-	public Calendar getCreatedDate() {
+	public Timestamp getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Calendar createdDate) {
+	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public Calendar getLastModifiedDate() {
+	public Timestamp getLastModifiedDate() {
 		return lastModifiedDate;
 	}
 
-	public void setLastModifiedDate(Calendar lastModifiedDate) {
+	public void setLastModifiedDate(Timestamp lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
-	public Set<Flashcard> getMovies() {
+	public Set<Flashcard> getFlashcard() {
 		return flashcard;
 	}
 
-	public void setMovies(Set<Flashcard> movies) {
-		this.flashcard = movies;
+	public void setFlashcard(Set<Flashcard> flashcard) {
+		this.flashcard = flashcard;
 	}
 
-	public Set<Tag> getActors() {
+	public Set<Tag> getTags() {
 		return tags;
 	}
 
-	public void setActors(Set<Tag> actors) {
-		this.tags = actors;
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
 	}
 
 	@Override
 	public String toString() {
 		return "FlashcardSet [id=" + id + ", title=" + title + ", createdDate=" + createdDate + ", lastModifiedDate="
-				+ lastModifiedDate + ", flashcard=" + flashcard + ", tag=" + tags + "]";
+				+ lastModifiedDate + ", flashcard=" + flashcard +  ", tags=" + tags +"]";
 	}
+
 	
 	
 }

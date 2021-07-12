@@ -2,7 +2,9 @@ package com.example.app;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Assertions;
@@ -50,7 +52,7 @@ class FlashcardServiceImplTest {
 	@Test
 	@Order(2)
 	void getAllFlashcards() {
-		Set<Flashcard> fcSet = (HashSet<Flashcard>) fs.getAllFlashcards();
+		List<Flashcard> fcSet = (ArrayList<Flashcard>) fs.getAllFlashcards();
 		System.out.println(fcSet.toString());
 	}
 

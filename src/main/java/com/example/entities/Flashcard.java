@@ -1,5 +1,6 @@
 package com.example.entities;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -11,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "flashcard")
@@ -21,7 +25,7 @@ public class Flashcard {
 	@Column(name = "flashcard_id")
 	private int id;
 	@Column(name="createddate")
-	private Calendar createdDate;
+	private Timestamp createdDate;
 	@Column(name="question")
 	private String question;
 	@Column(name="answer")
@@ -34,7 +38,7 @@ public class Flashcard {
 		super();
 	}
 	
-	public Flashcard(int id, Calendar createdDate, String question, String answer, FlashcardSet flashcardSet) {
+	public Flashcard(int id, Timestamp createdDate, String question, String answer, FlashcardSet flashcardSet) {
 		super();
 		this.id = id;
 		this.createdDate = createdDate;
@@ -54,12 +58,12 @@ public class Flashcard {
 	}
 
 
-	public Calendar getCreatedDate() {
+	public Timestamp getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(Calendar createdDate) {
+	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -99,7 +103,5 @@ public class Flashcard {
 				+ ", flashcardSet=" + flashcardSet + "]";
 	}
 
-	
-	
 	
 }
