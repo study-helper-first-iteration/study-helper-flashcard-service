@@ -3,6 +3,7 @@ package com.example.app;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.entities.Flashcard;
 import com.example.entities.FlashcardSet;
 import com.example.entities.Tag;
 import com.example.services.FlashcardSetService;
@@ -48,9 +50,15 @@ class FlashcardSetServiceImplTest {
 	}
 	
 	@Test
+	void getAllFlashcardSets() {
+		List<FlashcardSet> f =  fss.getAllFlashcardSets();
+		Assertions.assertNotNull(f);
+	}
+	
+	@Test
 	void getFlashcardSetById() {
 		FlashcardSet fs = fss.getFlashcardSetById(1);
-		System.out.println(fs);
+		Assertions.assertEquals(1,fs.getId());
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+@EnableEurekaClient
 @SpringBootApplication
 @EntityScan("com.example.entities") // will allow spring to find your entities
 @ComponentScan("com.example")// please scan all packages and any class labeled with component incorporate into the spring application

@@ -53,7 +53,6 @@ class FlashcardServiceImplTest {
 	@Order(2)
 	void getAllFlashcards() {
 		List<Flashcard> fcSet = (ArrayList<Flashcard>) fs.getAllFlashcards();
-		System.out.println(fcSet.toString());
 	}
 
 }

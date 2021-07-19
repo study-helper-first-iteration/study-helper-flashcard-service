@@ -1,3 +1,11 @@
+eureka:
+  client:
+   service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 2
+    lease-renewal-interval-in-seconds: 1
+    
 management:
   endpoints:
     shutdown:
@@ -7,20 +15,11 @@ management:
         include: '*'
 server:
   port: 9111
-  
 spring:
+  application:
+    name: Flashcard-Service
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     password: cheng321
     url: jdbc:mariadb://rongdb.ctew0zd8yj5j.us-east-2.rds.amazonaws.com:3306/flashcards
     username: spartan172321
-  application:
-    name: flashcards-Service
-eureka:
-  client:
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:9999/eureka
-  instance:
-    lease-expiration-duration-in-seconds: 2
-    lease-renewal-interval-in-seconds: 1
