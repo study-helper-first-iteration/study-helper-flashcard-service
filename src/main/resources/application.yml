@@ -1,5 +1,9 @@
+# make this a eureka client listening to a registry on port 8761
+
 server:
   port: 9111
+  # servlet:
+  #   context-path: /api
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
@@ -11,6 +15,6 @@ spring:
 eureka:
   client:
     fetch-registry: true
-    # register-with-eureka: true
+    register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka
