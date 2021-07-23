@@ -40,7 +40,7 @@ public class FlashcardSetController {
 
 	@ResponseBody
 	@GetMapping(value = "/flashcardSets/{id}")
-	public FlashcardSet getFlashcardSetById(@PathVariable int id) {
+	public FlashcardSet getFlashcardSetById(@PathVariable long id) {
 		try {
 			return fss.getFlashcardSetById(id);
 		} catch (NoSuchElementException e) {

@@ -8,7 +8,7 @@ public interface FlashcardService {
 	//CREATE
 	public Flashcard createFlashcard(Flashcard a);
 	//READ
-	public Flashcard getFlashcardById(int id);
+	public Flashcard getFlashcardById(long id);
 	public List<Flashcard> getAllFlashcards();
 	//UPDATE
 	public Flashcard updateFlashcard(Flashcard a);

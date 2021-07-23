@@ -1,7 +1,6 @@
 package com.example.entities;
 
 import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +18,6 @@ import javax.persistence.Table;
 
 import org.springframework.context.annotation.Lazy;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -31,7 +29,7 @@ public class FlashcardSet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "flashcardset_id")
-	private int id;
+	private long id;
 	@Column(name="title")
 	private String title;
 	@Column(name="createddate")
@@ -56,7 +54,7 @@ public class FlashcardSet {
 		super();
 	}
 	
-	public FlashcardSet(int id, String title, Timestamp createdDate, Timestamp lastModifiedDate, Set<Flashcard> flashcard,
+	public FlashcardSet(long id, String title, Timestamp createdDate, Timestamp lastModifiedDate, Set<Flashcard> flashcard,
 			Set<Tag> tag) {
 		super();
 		this.id = id;
@@ -67,11 +65,11 @@ public class FlashcardSet {
 		this.tags = tag;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

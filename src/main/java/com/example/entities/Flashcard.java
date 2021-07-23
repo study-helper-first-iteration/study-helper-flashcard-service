@@ -24,7 +24,7 @@ public class Flashcard {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "flashcard_id")
-	private int id;
+	private long id;
 	@Column(name="createddate")
 	private Timestamp createdDate;
 	@Column(name="question")
@@ -41,7 +41,7 @@ public class Flashcard {
 		super();
 	}
 	
-	public Flashcard(int id, Timestamp createdDate, String question, String answer, FlashcardSet flashcardSet) {
+	public Flashcard(long id, Timestamp createdDate, String question, String answer, FlashcardSet flashcardSet) {
 		super();
 		this.id = id;
 		this.createdDate = createdDate;
@@ -51,12 +51,12 @@ public class Flashcard {
 	}
 
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

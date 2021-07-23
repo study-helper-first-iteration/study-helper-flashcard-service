@@ -9,5 +9,5 @@ import com.example.entities.*;
 
 @Component
 @Repository
-public interface FlashcardRepository extends JpaRepository<Flashcard,Integer> {
+public interface FlashcardRepository extends JpaRepository<Flashcard,Long> {
 }

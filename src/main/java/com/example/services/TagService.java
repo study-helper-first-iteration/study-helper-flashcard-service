@@ -8,7 +8,7 @@ public interface TagService {
 	//CREATE
 	public Tag createTag(Tag a);
 	//READ
-	public Tag getTagById(int id);
+	public Tag getTagById(long id);
 	public Tag  getTagByTitle(String title);
 	public List<Tag> getTags();
 	//UPDATE

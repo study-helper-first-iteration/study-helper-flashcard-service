@@ -8,6 +8,6 @@ import com.example.entities.*;
 
 @Component
 @Repository
-public interface FlashcardSetRepository extends JpaRepository<FlashcardSet, Integer>{
+public interface FlashcardSetRepository extends JpaRepository<FlashcardSet, Long>{
 	FlashcardSet findByTitle(String title);
 }

@@ -8,6 +8,6 @@ import com.example.entities.*;
 
 @Component
 @Repository
-public interface TagRepository extends JpaRepository<Tag, Integer>{
+public interface TagRepository extends JpaRepository<Tag, Long>{
 	Tag findByTitle(String title);
 }

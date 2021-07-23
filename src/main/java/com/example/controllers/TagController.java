@@ -41,7 +41,7 @@ public class TagController {
 	
 	@ResponseBody
 	@GetMapping(value = "/tags/{id}")
-	public Tag getTagById(@PathVariable int id) {
+	public Tag getTagById(@PathVariable long id) {
 		try {
 			return ts.getTagById(id);
 		}catch(NoSuchElementException e) {

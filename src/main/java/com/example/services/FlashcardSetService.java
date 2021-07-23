@@ -8,7 +8,7 @@ public interface FlashcardSetService {
 	//CREATE
 	public FlashcardSet createFlashcardSet(FlashcardSet a);
 	//READ
-	public FlashcardSet getFlashcardSetById(int id);
+	public FlashcardSet getFlashcardSetById(long id);
 	public FlashcardSet  getFlashcardSetByTitle(String title);
 	public List<FlashcardSet> getAllFlashcardSets();
 	//UPDATE

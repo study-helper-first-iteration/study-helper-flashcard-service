@@ -22,7 +22,7 @@ public class FlashcardServiceImpl implements FlashcardService{
 	}
 
 	@Override
-	public Flashcard getFlashcardById(int id) {
+	public Flashcard getFlashcardById(long id) {
 		return fr.findById(id).orElse(null);
 	}
 
