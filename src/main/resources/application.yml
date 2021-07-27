@@ -1,0 +1,20 @@
+# make this a eureka client listening to a registry on port 8761
+
+server:
+  port: 9111
+  # servlet:
+  #   context-path: /api
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    password: cheng321
+    url: jdbc:mariadb://rongdb.ctew0zd8yj5j.us-east-2.rds.amazonaws.com:3306/flashcards
+    username: spartan172321
+  application:
+    name: flashcards
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
